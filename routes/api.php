@@ -29,11 +29,3 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router){
     Route::post('/refresh', [AuthController:: class, 'refresh']);
 
 });
-
-Route ::get('/', function() {
-
-    return response() -> json ([
-        'message' => 'Welcome To The Laravel API'
-
-    ]);
-});
