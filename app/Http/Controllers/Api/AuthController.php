@@ -19,7 +19,7 @@ class AuthController extends Controller
      *     path="/api/auth/register",
      *     tags={"Register"},
      *     summary="Register a new user",
-     *     description="Registers a new user with the provided information.",
+     *     description="Registers a new user with the provided information given.",
      *     operationId="registerUser",
      *     @OA\RequestBody(
      *         required=true,
