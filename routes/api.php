@@ -29,7 +29,7 @@ Route::group(['middleware' => 'api'], function ($router){
     Route::delete('record/{id}',[RecordController::class, 'destroy']); 
 
     //For PUT & PATCH METHOD
-    //http://127.0.0.1:8000/api/record/1/edit
+    //api/record/1/edit
 
 });
 
