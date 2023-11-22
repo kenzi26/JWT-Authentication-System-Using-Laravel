@@ -8,7 +8,33 @@ use App\Models\Record;
 use Illuminate\Support\Facades\Validator;
 
 class RecordController extends Controller
-{
+{   
+    /**
+ * @OA\Get(
+ *     path="/api/record",
+ *     tags={"Get Records"},
+ *     summary="Get all records",
+ *     description="Retrieves all records from the database.",
+ *     operationId="getAllRecords",
+ *     @OA\Response(
+ *         response="200",
+ *         description="Records retrieved successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=200),
+ *             @OA\Property(property="records", type="array", @OA\Items(type="object"))
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="404",
+ *         description="No records found",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=404),
+ *             @OA\Property(property="message", type="string", example="No Records Found")
+ *         )
+ *     )
+ * )
+ */
+
     public function index()
     {
         $records = Record::all();
@@ -25,7 +51,7 @@ class RecordController extends Controller
             ], 404);
         }
     }
-
+    
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -61,7 +87,74 @@ class RecordController extends Controller
             }
         }
     }
+/**
+ * @OA\Post(
+ *     path="/api/record",
+ *     tags={"Create A Record"},
+ *     summary="Create a Record",
+ *     description="Creates a new record with the provided data.",
+ *     operationId="createRecord",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(
+ *                     property="name",
+ *                     type="string",
+ *                     description="Name of the user",
+ *                     example="John Doe"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="course",
+ *                     type="string",
+ *                     description="Name of the course",
+ *                     example="Computer Science"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="email",
+ *                     type="string",
+ *                     format="email",
+ *                     description="User's email",
+ *                     example="john@example.com"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="phone",
+ *                     type="string",
+ *                     description="User's phone number",
+ *                     example="1234567890"
+ *                 ),
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="200",
+ *         description="Record created successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=200),
+ *             @OA\Property(property="message", type="string", example="Created A Record Successfully"),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="422",
+ *         description="Validation errors",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=422),
+ *             @OA\Property(property="errors", type="object", example={"name": {"The name field is required."}}),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="500",
+ *         description="Internal Server Error",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=500),
+ *             @OA\Property(property="message", type="string", example="Something Went Wrong"),
+ *         )
+ *     )
+ * )
+ */
 
+    
     public function show($id)
     {
         $record = Record::find($id);
