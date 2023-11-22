@@ -280,6 +280,46 @@ class RecordController extends Controller
         }
     }
 
+    /**
+ * @OA\Delete(
+ *     path="/api/record/{id}",
+ *     tags={"Delete A Record"},
+ *     summary="Delete a Record by ID",
+ *     description="Deletes a record with the specified ID.",
+ *     operationId="deleteRecord",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         required=true,
+ *         description="ID of the record to be deleted",
+ *         @OA\Schema(type="integer", format="int64")
+ *     ),
+ *     @OA\Response(
+ *         response="200",
+ *         description="Record deleted successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=202),
+ *             @OA\Property(property="message", type="string", example="Record Deleted!"),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="404",
+ *         description="Record not found",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=404),
+ *             @OA\Property(property="message", type="string", example="Record Not Found!"),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="500",
+ *         description="Internal Server Error",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=500),
+ *             @OA\Property(property="message", type="string", example="Something Went Wrong"),
+ *         )
+ *     )
+ * )
+ */
     public function destroy($id)
     {
         $record = Record::find($id);
@@ -298,5 +338,7 @@ class RecordController extends Controller
             ], 404);
         }
     }
+
+    
 }
 
