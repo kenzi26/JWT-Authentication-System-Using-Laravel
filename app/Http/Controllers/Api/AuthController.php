@@ -20,7 +20,7 @@ class AuthController extends Controller
 /**
  * @OA\Post(
  *     path="/api/auth/register",
- *     tags={"Register"},
+ *     tags={"Auth Register"},
  *     summary="Register a new user",
  *     description="Registers a new user with the provided information given.",
  *     operationId="registerUser",
@@ -115,7 +115,7 @@ class AuthController extends Controller
     /**
  * @OA\Post(
  *     path="/api/auth/login",
- *     tags={"Login"},
+ *     tags={"Auth Login"},
  *     summary="User Login",
  *     description="Logs in a user with the provided credentials.",
  *     operationId="loginUser",
@@ -200,7 +200,7 @@ class AuthController extends Controller
 /**
  * @OA\Post(
  *     path="/api/auth/refresh",
- *     tags={"Auth"},
+ *     tags={"Auth Refresh"},
  *     summary="Refresh Access Token",
  *     description="Refreshes the access token.",
  *     operationId="refreshToken",

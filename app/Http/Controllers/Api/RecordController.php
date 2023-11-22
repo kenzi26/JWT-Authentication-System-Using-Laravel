@@ -231,6 +231,88 @@ class RecordController extends Controller
         }
     }
 
+    /**
+ * @OA\Put(
+ *     path="/api/record/{id}/edit",
+ *     tags={"Update Record By {id}"},
+ *     summary="Update a Record by ID",
+ *     description="Updates a record with the provided data by ID.",
+ *     operationId="updateRecord",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID of the record to be updated",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(
+ *                     property="name",
+ *                     type="string",
+ *                     description="Name of the user",
+ *                     example="John Doe"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="course",
+ *                     type="string",
+ *                     description="Name of the course",
+ *                     example="Computer Science"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="email",
+ *                     type="string",
+ *                     format="email",
+ *                     description="User's email",
+ *                     example="john@example.com"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="phone",
+ *                     type="string",
+ *                     description="User's phone number",
+ *                     example="1234567890"
+ *                 ),
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="200",
+ *         description="Record updated successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=200),
+ *             @OA\Property(property="message", type="string", example="Record Updated Successfully"),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="404",
+ *         description="Record not found",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=404),
+ *             @OA\Property(property="message", type="string", example="Record Not Found"),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="422",
+ *         description="Validation errors",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=422),
+ *             @OA\Property(property="errors", type="object", example={"name": {"The name field is required."}}),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="500",
+ *         description="Internal Server Error",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=500),
+ *             @OA\Property(property="message", type="string", example="Something Went Wrong"),
+ *         )
+ *     )
+ * )
+ */
+
     public function update(Request $request, int $id)
 
     {

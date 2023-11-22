@@ -10,14 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Authentication System",
- *      description="L5 Swagger OpenApi description",
+ *      title="Authentication System And CRUD Operation",
+ *      description="JWT SYSTEM AND CRUD OPERATION APIs ",
  *      @OA\Contact(
- *          email="mokwenyekenechukwu"
+ *          email="kmokwenye@zojatech.com"
  *      ),
  *     @OA\License(
  *         name="Apache 2.0",
- *         url="https://www.apache.org/licenses/LICENSE-2.0.html"
+ *         url=""
  *     )
  * )
  * 
