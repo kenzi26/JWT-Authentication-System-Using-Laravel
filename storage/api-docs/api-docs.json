@@ -325,7 +325,7 @@
             },
             "post": {
                 "tags": [
-                    "Records"
+                    "Create A Record"
                 ],
                 "summary": "Create a Record",
                 "description": "Creates a new record with the provided data.",
@@ -421,6 +421,92 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Something Went Wrong"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/record/{id}": {
+            "get": {
+                "tags": [
+                    "Get Records by {id}"
+                ],
+                "summary": "Get a Record by ID",
+                "description": "Retrieves a record by its ID.",
+                "operationId": "getRecordById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the record",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "record": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "John Doe"
+                                                },
+                                                "course": {
+                                                    "type": "string",
+                                                    "example": "Computer Science"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "format": "email",
+                                                    "example": "john@example.com"
+                                                },
+                                                "phone": {
+                                                    "type": "string",
+                                                    "example": "1234567890"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Record not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No Such Record Found!"
                                         }
                                     },
                                     "type": "object"

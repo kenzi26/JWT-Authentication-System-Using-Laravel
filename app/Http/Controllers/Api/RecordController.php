@@ -172,6 +172,48 @@ class RecordController extends Controller
         }
     }
 
+    /**
+ * @OA\Get(
+ *     path="/api/record/{id}",
+ *     tags={"Get Records by {id}"},
+ *     summary="Get a Record by ID",
+ *     description="Retrieves a record by its ID.",
+ *     operationId="getRecordById",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         required=true,
+ *         description="ID of the record",
+ *         @OA\Schema(
+ *             type="integer",
+ *             format="int64"
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="200",
+ *         description="Record retrieved successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=200),
+ *             @OA\Property(property="record", type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="name", type="string", example="John Doe"),
+ *                 @OA\Property(property="course", type="string", example="Computer Science"),
+ *                 @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *                 @OA\Property(property="phone", type="string", example="1234567890")
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response="404",
+ *         description="Record not found",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="integer", example=404),
+ *             @OA\Property(property="message", type="string", example="No Such Record Found!")
+ *         )
+ *     )
+ * )
+ */
+
     public function edit($id)
     {
         $record = Record::find($id);
