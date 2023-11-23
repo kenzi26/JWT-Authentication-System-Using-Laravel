@@ -43,7 +43,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router){
     Route::post('/logout', [AuthController:: class, 'logout']);
     Route::post('/refresh', [AuthController:: class, 'refresh']);
 
-    //enpoint pattern for auth
+    //enpoint for auth
     ///api/auth/login
 
 });
