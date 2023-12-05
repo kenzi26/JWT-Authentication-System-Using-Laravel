@@ -28,7 +28,7 @@ Route::group(['middleware' => 'api'], function ($router){
     Route::match(['put', 'patch'], 'record/{id}/edit', [RecordController::class, 'update']);
     Route::delete('record/{id}',[RecordController::class, 'destroy']); 
 
-    //For PUT & PATCH METHOD
+    //For PUT & PATCH METHOD use:
     //api/record/1/edit
 
 });
