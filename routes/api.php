@@ -45,5 +45,6 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router){
 
     //enpoint for auth
     ///api/auth/login
+    //api/auth/me {then the token}
 
 });
